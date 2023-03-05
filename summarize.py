@@ -3,6 +3,7 @@ from transformers import BartTokenizer, TFBartForConditionalGeneration, pipeline
 from Utils import fetch_article_text, count_tokens
 import re
 from nltk.tokenize import sent_tokenize
+import nltk
 
 tokenizer = BartTokenizer.from_pretrained('facebook/bart-large-cnn')
 model = TFBartForConditionalGeneration.from_pretrained('facebook/bart-large-cnn')
@@ -11,7 +12,11 @@ def bart_summarize(text: str):
 
     max_length = model.config.max_position_embeddings
 
-    sentences = sent_tokenize(text)
+    try:
+        sentences = sent_tokenize(text)
+    except:
+        nltk.download('punkt') 
+        sentences = sent_tokenize(text)
     sentences = [sentence for sentence in sentences if len(sentence.strip()) > 0 and len(sentence.split(" ")) > 4]
 
     input_chunks = []
