@@ -49,6 +49,8 @@ def bart_summarize(text: str):
         
         # add the summary to the list of summaries
         summaries.append(summary)
+
+        print(summary)
         
     # # combine the summaries to get the final summary for the entire input
     final_summary = " ".join(summaries)
