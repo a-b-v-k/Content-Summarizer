@@ -37,6 +37,7 @@ def bart_summarize(text: str):
 
     # summarize each input chunk separately
     summaries = []
+    print(datetime.now().strftime("%H:%M:%S"))
     for chunk in input_chunks:
         # encode the input chunk
 
@@ -51,5 +52,7 @@ def bart_summarize(text: str):
         
     # # combine the summaries to get the final summary for the entire input
     final_summary = " ".join(summaries)
+
+    print(datetime.now().strftime("%H:%M:%S"))
 
     return final_summary
