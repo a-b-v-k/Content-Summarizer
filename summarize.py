@@ -1,11 +1,11 @@
 from datetime import datetime
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, pipeline
+from transformers import BartTokenizer, TFBartForConditionalGeneration, pipeline
 from Utils import fetch_article_text, count_tokens
 import re
 from nltk.tokenize import sent_tokenize
 
-tokenizer = AutoTokenizer.from_pretrained("facebook/bart-large-cnn")
-model = AutoModelForSeq2SeqLM.from_pretrained("facebook/bart-large-cnn")
+tokenizer = BartTokenizer.from_pretrained('facebook/bart-large-cnn')
+model = TFBartForConditionalGeneration.from_pretrained('facebook/bart-large-cnn')
 
 def bart_summarize(text: str):
 
