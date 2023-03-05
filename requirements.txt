@@ -1,3 +1,4 @@
+tensorflow
 transformers
 beautifulsoup4
 nltk
