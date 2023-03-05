@@ -41,7 +41,7 @@ def bart_summarize(text: str):
     for chunk in input_chunks:
         # encode the input chunk
 
-        encoded_input = tokenizer.encode(chunk, max_length=max_length, truncation=True, padding='longest', return_tensors='tf')
+        encoded_input = tokenizer.encode(chunk, max_length=max_length, return_tensors='tf')
         
         # generate summary for the input chunk
         summary_ids = model.generate(encoded_input, max_length=300, num_beams=4, early_stopping=True)
