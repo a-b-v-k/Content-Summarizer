@@ -17,7 +17,7 @@ class BARTSummarizer:
 
     def summarize(self, text: str):
         encoded_input = self.tokenizer.encode(text, max_length=self.max_length, return_tensors='tf', truncation=True)
-        summary_ids = self.model.generate(encoded_input, max_length=300, num_beams=4, early_stopping=True)
+        summary_ids = self.model.generate(encoded_input, max_length=300, num_beams=4, early_stopping=True, min_length=70)
         summary = self.tokenizer.decode(summary_ids[0], skip_special_tokens=True)
         return summary
     
