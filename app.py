@@ -1,6 +1,4 @@
 import io
-import os
-os.system("pip install streamlit --upgrade")
 from process_media import MediaProcessor
 import streamlit as st
 from summarizer import BARTSummarizer
