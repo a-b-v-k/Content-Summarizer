@@ -2,3 +2,8 @@ tensorflow
 transformers
 beautifulsoup4
 nltk
+networkx
+sklearn
+community
+youtube_transcript_api
+spacy
