@@ -1,7 +1,7 @@
 import io
 import wave
 import tensorflow as tf
-import tensorflow-io as tfio
+import tensorflow_io as tfio
 from pydub import AudioSegment
 from transformers import AutoProcessor, TFWhisperForConditionalGeneration
 
