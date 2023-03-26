@@ -2,11 +2,8 @@ import io
 import wave
 import tensorflow as tf
 import tensorflow_io as tfio
-import moviepy.editor as mp
-import numpy as np
 from pydub import AudioSegment
 from transformers import AutoProcessor, TFWhisperForConditionalGeneration
-from moviepy.video.io.VideoFileClip import VideoFileClip
 
 # tf.config.run_functions_eagerly(True)
 

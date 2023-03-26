@@ -1,10 +1,7 @@
 import io
-import time
-import wave
 from process_media import MediaProcessor
 import streamlit as st
 from summarizer import BARTSummarizer
-from pydub import AudioSegment
 from  Utils import fetch_article_text, get_text_from_youtube_url
 
 st.markdown(
