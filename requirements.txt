@@ -8,3 +8,4 @@ community
 youtube_transcript_api
 spacy
 tensorflow_io
+pydub
