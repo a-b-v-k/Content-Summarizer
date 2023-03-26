@@ -7,5 +7,5 @@ scikit-learn
 community
 youtube_transcript_api
 spacy
-tensorflow-io==0.25.0
+tensorflow_io==0.23.1
 pydub
