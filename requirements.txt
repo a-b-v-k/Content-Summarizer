@@ -9,5 +9,3 @@ youtube_transcript_api
 spacy
 tensorflow_io
 pydub
-streamlit
-numpy
