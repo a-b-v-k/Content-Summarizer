@@ -3,7 +3,7 @@ transformers
 beautifulsoup4
 nltk
 networkx
-sklearn
+scikit-learn
 community
 youtube_transcript_api
 spacy
