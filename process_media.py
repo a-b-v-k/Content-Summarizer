@@ -58,7 +58,7 @@ class MediaProcessor:
                 wav_file.writeframes(raw_data)
             wav_bytes = wav_buffer.getvalue()
         return wav_bytes
-    
+        
     def process_audio(self, audio_bytes):
         resampled_audio_data = self.load_wav_16k_mono(audio_bytes)
         return self.get_text_from_audio(resampled_audio_data)
