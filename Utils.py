@@ -7,7 +7,10 @@ import streamlit as st
 from youtube_transcript_api import YouTubeTranscriptApi
 import spacy
 
+<<<<<<< HEAD
 @st.cache
+=======
+>>>>>>> f4e023f89f2134eaae139db6c3bf9c1c63cc1901
 def fetch_article_text(url: str):
 
     r = requests.get(url)
