@@ -15,13 +15,16 @@ class BARTSummarizer:
         self.model = TFBartForConditionalGeneration.from_pretrained(model_name)
         self.max_length = self.model.config.max_position_embeddings
 
-    def summarize(self, text: str):
+    def summarize(self, text: str, auto: bool = False):
         encoded_input = self.tokenizer.encode(text, max_length=self.max_length, return_tensors='tf', truncation=True)
-        summary_ids = self.model.generate(encoded_input, max_length=300, num_beams=4, early_stopping=True)
+        if auto:
+            summary_ids = self.model.generate(encoded_input, max_length=300, num_beams=1, no_repeat_ngram_size=2, min_length=60)
+        else:
+            summary_ids = self.model.generate(encoded_input, max_length=300, num_beams=4, early_stopping=True)
         summary = self.tokenizer.decode(summary_ids[0], skip_special_tokens=True)
         return summary
     
-    def chunk_summarize(self, text: str):
+    def chunk_summarize(self, text: str, auto: bool = False):
 
         # split the input into chunks
         summaries = []
@@ -30,7 +33,7 @@ class BARTSummarizer:
         # summarize each input chunk separately
         print(datetime.now().strftime("%H:%M:%S"))
         for chunk in input_chunks:
-            summaries.append(self.summarize(chunk))
+            summaries.append(self.summarize(chunk, auto))
             
         # # combine the summaries to get the final summary for the entire input
         final_summary = " ".join(summaries)
@@ -48,7 +51,7 @@ class BARTSummarizer:
         sentences = [sentence for sentence in sentences if len(sentence.strip()) > 0 and len(sentence.split(" ")) > 4]
 
         # Combine every 5 sentences into a single sentence
-        sentences = [' '.join(sentences[i:i + 5]) for i in range(0, len(sentences), 5)]
+        sentences = [' '.join(sentences[i:i + 6]) for i in range(0, len(sentences), 5)]
 
         return sentences
     
@@ -81,8 +84,10 @@ class BARTSummarizer:
         # Summarize each cluster
         summaries = []
         for cluster in clustered_sentences:
-            summaries.append(self.chunk_summarize(cluster))
+            summaries.append(self.chunk_summarize(cluster, auto=True))
 
         # Combine the summaries to get the final summary for the entire input
         final_summary = "\n\n".join(summaries)
+
+        return final_summary
     
