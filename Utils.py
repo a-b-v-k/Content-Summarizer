@@ -7,7 +7,7 @@ import streamlit as st
 from youtube_transcript_api import YouTubeTranscriptApi
 import spacy
 
-@st.cache_data
+@st.cache
 def fetch_article_text(url: str):
 
     r = requests.get(url)
@@ -15,13 +15,12 @@ def fetch_article_text(url: str):
     results = soup.find_all(["h1", "p"])
     text = [result.text for result in results]
     ARTICLE = " ".join(text)
-
-    return ARTICLE
+    return re.sub(r'\[\d+\]', '', ARTICLE)
 
 def count_tokens(text: str):
     return len(text.split(" "))
 
-@st.cache_data
+@st.cache
 def get_text_from_youtube_url(url: str):
 
     id = url.split("=")[1]
@@ -74,13 +73,16 @@ def add_punctuation(text: str):
 
 
 def get_input_chunks(text: str, max_length: int = 500):
+
+    text = re.sub(r'\[\d+\]', '', text)
+
     try:
         sentences = sent_tokenize(text)
     except:
         nltk.download('punkt') 
         sentences = sent_tokenize(text)
 
-    sentences = [re.sub(r'\[[0-9]*\]', ' ', sentence) for sentence in sentences if len(sentence.strip()) > 0 and count_tokens(sentence) > 4]
+    sentences = [sentence for sentence in sentences if len(sentence.strip()) > 0 and count_tokens(sentence) > 4]
 
     input_chunks = []
     temp_sentences = ""
