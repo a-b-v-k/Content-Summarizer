@@ -149,6 +149,20 @@ elif input_type == "Media":
     else:
         youtube_url = st.text_input("Enter YouTube URL here", placeholder="Enter URL to an YouTube video", label_visibility="visible")
         if youtube_url:
-            show_buttons("youtube_url", youtube_url)
+            if not get_text(url):
+                try:
+                    try:
+                        with st.spinner("Fetching text from video..."):
+                            text_to_summarize = get_text_from_youtube_url(youtube_url)
+                    except:
+                        with st.spinner("Captions not available. Downloading video..."):
+                            get_yt_video(youtube_url)
+                    text_to_summarize = get_text(url)
+                except:
+                    st.error("Unable to fetch text from video. Please try a different video.")
+                    text_to_summarize = None
+            else:
+                text_to_summarize = get_text(url)
+            st.markdown("#### Text from video:")
             
             
