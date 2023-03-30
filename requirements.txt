@@ -9,3 +9,4 @@ youtube_transcript_api
 spacy
 tensorflow_io==0.23.1
 pydub
+pytube
