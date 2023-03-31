@@ -7,7 +7,7 @@ import streamlit as st
 from youtube_transcript_api import YouTubeTranscriptApi
 import spacy
 
-@st.cache_data
+@st.cache
 def fetch_article_text(url: str):
 
     r = requests.get(url)
@@ -20,7 +20,7 @@ def fetch_article_text(url: str):
 def count_tokens(text: str):
     return len(text.split(" "))
 
-@st.cache_data
+@st.cache
 def get_text_from_youtube_url(url: str):
 
     id = url.split("=")[1]
