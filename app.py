@@ -59,7 +59,7 @@ def show_buttons(type, data = None):
                 st.error("Unable to fetch text from video. Please try a different video.")
                 text_to_summarize = None
             if text_to_summarize:
-                generate_summary(overall_summary, auto_chapters_summarize, text_to_summarize, show_text = True)
+                generate_summary(overall_summary, auto_chapters_summary, text_to_summarize, show_text = True)
     elif type == 'document':
         # TODO: Add document summary
         pass
