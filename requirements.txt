@@ -10,3 +10,4 @@ spacy
 tensorflow_io==0.23.1
 pydub
 pytube
+streamlit>=1.23.0
