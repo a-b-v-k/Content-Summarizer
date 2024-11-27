@@ -1,4 +1,4 @@
-tensorflow==2.8.0
+tensorflow
 transformers
 beautifulsoup4
 nltk
@@ -7,8 +7,9 @@ scikit-learn
 community
 youtube_transcript_api
 spacy
-tensorflow_io==0.23.1
+tensorflow_io
 pydub
 pytube
-streamlit>=1.23.0
-altair<5
+streamlit
+altair
+tf-keras
