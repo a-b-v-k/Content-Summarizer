@@ -20,7 +20,7 @@ class BARTSummarizer:
         if auto:
             summary_ids = self.model.generate(encoded_input, max_length=300, num_beams=1, no_repeat_ngram_size=2, min_length=60)
         else:
-            summary_ids = self.model.generate(encoded_input, max_length=300, num_beams=4, early_stopping=True)
+            summary_ids = self.model.generate(encoded_input, max_length=self.max_length, num_beams=4, early_stopping=True)
         summary = self.tokenizer.decode(summary_ids[0], skip_special_tokens=True)
         return summary
     
