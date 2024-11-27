@@ -77,6 +77,7 @@ def get_input_chunks(text: str, max_length: int = 500):
     text = re.sub(r'\[\d+\]', '', text)
 
     try:
+        nltk.download('punkt_tab')
         sentences = sent_tokenize(text)
     except:
         nltk.download('punkt') 
